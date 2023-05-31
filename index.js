@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
   res.send('Hello World')
 })
 
-app.get('/products', (req, res) => {
+app.get('/comidas', (req, res) => {
   res.json([
     {
       name: 'alvorguesa',
@@ -18,6 +18,20 @@ app.get('/products', (req, res) => {
     }
   ])
 })
+
+app.get('/bebidas', (req, res) => {
+  const { limit, offset } = req.query
+  if(limit && offset) {
+    res.json({
+      limit,
+      offset
+    })
+  } else {
+    res.send('No hay parámetros')
+  }
+})
+
+
 
 app.get('/products/:id', (req, res) => {
   const { id } = req.params
